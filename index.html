@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#17181c">
+<title>Animation Studios</title>
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery" class="screen active">
+  <header class="g-head">
+    <div class="logo"><img src="logo.png" alt="Animation Studios" class="logo-img"></div>
+    <div class="grow"></div>
+    <div class="seg" id="g-device">
+      <button type="button" data-dev="laptop">💻 Laptop</button>
+      <button type="button" data-dev="ipad">📱 iPad</button>
+    </div>
+    <button type="button" class="g-help" id="g-help" aria-label="Help">?</button>
+  </header>
+  <div class="g-grid" id="g-grid"></div>
+</section>
+
+<!-- ============ EDITOR ============ -->
+<section id="editor" class="screen">
+  <header id="topbar">
+    <button type="button" class="tb" id="b-home" title="Back to gallery" aria-label="Gallery"></button>
+    <button type="button" class="pname" id="b-name" title="Rename"></button>
+    <span id="save-state"></span>
+    <div class="grow"></div>
+    <button type="button" class="tb" id="b-undo" title="Undo (Ctrl+Z · two-finger tap)" aria-label="Undo"></button>
+    <button type="button" class="tb" id="b-redo" title="Redo (Ctrl+Shift+Z · three-finger tap)" aria-label="Redo"></button>
+    <span class="sep"></span>
+    <button type="button" class="tb tog" id="b-onion" title="Onion skin (O)" aria-label="Onion skin"></button>
+    <button type="button" class="tb caret" id="b-onion-set" data-pop="pop-onion" aria-label="Onion settings">▾</button>
+    <button type="button" class="tb" id="b-layers" data-pop="pop-layers" title="Layers" aria-label="Layers"></button>
+    <span class="sep"></span>
+    <button type="button" class="tb play" id="b-play" title="Play / pause (Enter)" aria-label="Play"></button>
+    <button type="button" class="tb txt" id="b-fps" data-pop="pop-fps" title="Frames per second">12 fps</button>
+    <button type="button" class="tb" id="b-preview" title="Fullscreen preview" aria-label="Preview"></button>
+    <span class="sep"></span>
+    <button type="button" class="tb txt acc" id="b-export" data-pop="pop-export">Export</button>
+    <button type="button" class="tb" id="b-more" data-pop="pop-more" aria-label="More"></button>
+  </header>
+
+  <aside id="tools">
+    <div id="tool-list"></div>
+    <button type="button" id="b-color" data-pop="pop-color" aria-label="Colour"><span id="color-dot"></span></button>
+    <div class="vs-wrap">
+      <div class="vs" id="vs-size" title="Brush size ([ and ])"><div class="vs-fill"></div><span class="vs-val"></span><span class="vs-lab">Size</span></div>
+      <div class="vs" id="vs-opac" title="Opacity"><div class="vs-fill"></div><span class="vs-val"></span><span class="vs-lab">Opac</span></div>
+    </div>
+  </aside>
+
+  <main id="stage">
+    <canvas id="view"></canvas>
+    <div id="sel-bar"></div>
+    <button type="button" id="zoom-lab" title="Fit to screen (0)">100%</button>
+    <div id="hint"></div>
+  </main>
+
+  <footer id="timeline">
+    <button type="button" class="tb" id="b-prev" title="Previous frame (,)" aria-label="Previous frame"></button>
+    <div id="strip"></div>
+    <button type="button" class="tb" id="b-next" title="Next frame (.)" aria-label="Next frame"></button>
+    <div class="tl-btns">
+      <button type="button" class="tlb add" id="b-add" title="New blank frame (A)" aria-label="Add frame">+</button>
+      <button type="button" class="tlb" id="b-dup" title="Duplicate frame (D)" aria-label="Duplicate frame"></button>
+      <span id="f-count">1 / 1</span>
+    </div>
+  </footer>
+</section>
+
+<!-- popovers (filled by app.js) -->
+<div class="pop" id="pop-color"></div>
+<div class="pop" id="pop-layers"></div>
+<div class="pop" id="pop-onion"></div>
+<div class="pop" id="pop-fps"></div>
+<div class="pop" id="pop-export"></div>
+<div class="pop" id="pop-more"></div>
+<div class="pop" id="pop-tool"></div>
+<div class="pop" id="pop-frame"></div>
+<div class="pop" id="pop-card"></div>
+
+<!-- fullscreen preview -->
+<div id="preview">
+  <canvas id="pv"></canvas>
+  <div class="pv-bar">
+    <button type="button" id="pv-play">❚❚</button>
+    <span id="pv-info"></span>
+    <button type="button" id="pv-close">✕ Close</button>
+  </div>
+</div>
+
+<!-- tutorial -->
+<div id="tut">
+  <canvas id="tut-cv"></canvas>
+  <div id="tut-bar"></div>
+</div>
+
+<div id="modal"><div class="m-box" id="m-box"></div></div>
+<div id="toast" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
